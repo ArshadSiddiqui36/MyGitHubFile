@@ -1,10 +1,390 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title></title>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	<title>Circular Navbar</title>
+	<style>
+		*{box-sizing: border-box;}
+		body
+		{
+			background-color: #f273ba;
+			font-family: tahoma;
+			overflow: hidden;
+		}
+		.mainDiv
+		{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			border: 1px solid black;
+			width: 750px;
+			height: 302px;
+			box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.8);
+
+		}
+
+		.navbar
+		{
+			background-image: url("ProfilePic.jpeg");
+			/*background-size: 150px 150px;*/
+			background-size: cover;
+			width: 150px;
+			height: 150px;
+			line-height: 150px;
+			border-radius: 50%;
+			/*background: white;*/
+			top: 75px;
+			left: 75px;
+			position: relative;
+			cursor: pointer;
+			text-align: center;
+			font-size: 2.75em;
+			font-weight: bold;
+			/*color: #f273ba;*/
+			transition: 0.24s 0.2s;
+			/*color: transparent;*/
+		}
+		.navbar:hover
+		{
+			color: #f273ba;
+			/*background: white;*/
+			
+		}
+		span{ font-size: 0.6em; }
+
+		.navbar .menu
+		{
+			list-style: none;
+			padding: 0;
+			margin: 0;
+			position: absolute;
+			top: -50%;
+			left: -50%;
+			border: 150px solid transparent;
+			cursor: default;
+			border-radius: 50%;
+			transform: scale(0);
+			transition: transform 1.4s 0.07s;
+			z-index: -1;
+		}
+		
+		.navbar:hover .menu
+		{
+			transition: transform 0.4s 0.08s, z-index 0s 0.5s;
+			transform: scale(1);
+			z-index: 1;
+		}
+
+		.navbar .menu li
+		{
+			position: absolute;
+			top: -100px;
+			left: -100px;
+			transform-origin: 100px 100px;
+			transition: all 0.5s 0.1s;
+		}
+
+		.navbar:hover .menu li
+		{
+			transition: all 0.7s;
+		}
+		
+		.navbar .menu li a
+		{
+			width: 45px;
+			height: 45px;
+			line-height: 45px;
+			border-radius: 50%;
+			background: white;
+			position: absolute;
+			font-size: 59%;
+			color: #f273ba;
+			transition: 0.7s;
+		}
+
+		.navbar:hover .menu li:nth-child(1)
+		{
+			transition-delay: 0.02s;
+			transform: rotate(85deg);
+		}
+		.navbar:hover .menu li:nth-child(1) a
+		{
+			transition-delay: 0.04s;
+			transform: rotate(275deg);
+			color: #3b5998;
+		}
+		.navbar:hover .menu li:nth-child(1) a:hover{background-color: #3b5998; color: white; transition-delay: 0s; box-shadow: 0px 0px 4px 4px gold;}
+
+		.navbar:hover .menu li:nth-child(2)
+		{
+			transition-delay: 0.04s;
+			transform: rotate(125deg);
+		}
+		.navbar:hover .menu li:nth-child(2) a
+		{
+			transition-delay: 0.08s;
+			transform: rotate(595deg);
+			color: #1da1f2;
+		}
+		.navbar:hover .menu li:nth-child(2) a:hover{background: #1da1f2; color:white; transition-delay: 0s; box-shadow: 0px 0px 4px 4px gold;}
+		
+		.navbar:hover .menu li:nth-child(3)
+		{
+			transition-delay: 0.06s;
+			transform: rotate(165deg);
+		}
+		.navbar:hover .menu li:nth-child(3) a
+		{
+			transition-delay: 0.12s;
+			transform: rotate(555deg);
+			color: #fb5958;
+		}
+		.navbar:hover .menu li:nth-child(3) a:hover{background: #fb5958; color:white; transition-delay: 0s; box-shadow: 0px 0px 4px 4px gold;}
+
+		.navbar:hover .menu li:nth-child(4)
+		{
+			transition-delay: 0.08s;
+			transform: rotate(205deg);
+		}
+		.navbar:hover .menu li:nth-child(4) a
+		{
+			transition-delay: 0.16s;
+			transform: rotate(515deg);
+			color: #007bb5;
+		}
+		.navbar:hover .menu li:nth-child(4) a:hover{background: #007bb5; color:white; transition-delay: 0s; box-shadow: 0px 0px 4px 4px gold;}
+
+		.navbar:hover .menu li:nth-child(5)
+		{
+			transition-delay: 0.1s;
+			transform: rotate(245deg);
+		}
+		.navbar:hover .menu li:nth-child(5) a
+		{
+			transition-delay: 0.2s;
+			transform: rotate(475deg);
+			color: #d34836;
+		}
+		.navbar:hover .menu li:nth-child(5) a:hover{background: #d34836; color:white; transition-delay: 0s; box-shadow: 0px 0px 4px 4px gold;}
+
+		.navbar:hover .menu li:nth-child(6)
+		{
+			transition-delay: 0.12s;
+			transform: rotate(285deg);
+		}
+		.navbar:hover .menu li:nth-child(6) a
+		{
+			transition-delay: 0.24s;
+			transform: rotate(435deg);
+			color: #c8232c;
+		}
+		.navbar:hover .menu li:nth-child(6) a:hover{background: #c8232c; color:white; transition-delay: 0s; box-shadow: 0px 0px 4px 4px gold;}
+
+		.navbar:hover .menu li:nth-child(7)
+		{
+			transition-delay: 0.14s;
+			transform: rotate(325deg);
+		}
+		.navbar:hover .menu li:nth-child(7) a
+		{
+			transition-delay: 0.28s;
+			transform: rotate(395deg);
+			color: #6e5494;
+		}
+		.navbar:hover .menu li:nth-child(7) a:hover{background: #6e5494; color:white; transition-delay: 0s; box-shadow: 0px 0px 4px 4px gold;}
+
+		.navbar:hover .menu li:nth-child(8)
+		{
+			transition-delay: 0.16s;
+			transform: rotate(365deg);
+		}
+		.navbar:hover .menu li:nth-child(8) a
+		{
+			transition-delay: 0.32s;
+			transform: rotate(355deg);
+			color: #F8C30A;
+		}
+		.navbar:hover .menu li:nth-child(8) a:hover{background: #F8C30A; color:white; transition-delay: 0s; box-shadow: 0px 0px 4px 4px gold;}
+		
+		.navbar:hover .menu li:nth-child(9)
+		{
+			transition-delay: 0.18s;
+			transform: rotate(405deg);
+		}
+		.navbar:hover .menu li:nth-child(9) a
+		{
+			transition-delay: 0.36s;
+			transform: rotate(315deg);
+			background-color: white;
+			color: green;
+		}
+		.navbar:hover .menu li:nth-child(9) a:hover{background:green; color:white; transition-delay: 0s; box-shadow: 0px 0px 4px 4px gold;}
+		
+		.menu li a
+		{
+			text-decoration: none;
+		}
+
+
+		.Container
+		{
+			margin-top: -75px;
+			margin-right: 20px;
+			float: right;
+			width: 100%;
+			height: 150px;
+			/*line-height: 150px;*/
+			/*background: transparent;*/
+			display: grid;
+			grid-template-columns: 25% 75%;
+		}
+		#Container
+		{
+			/*visibility: hidden;*/
+			transition: .5s ease-in-out;
+		}
+		.Circle
+		{
+			width: 300px;
+			height: 300px;
+			border-radius: 50%;
+			background: #f273ba;
+			margin-top: -75px;
+			margin-left: 20px;
+			z-index: -2;
+			/*border: 2px solid white;*/
+			/*box-shadow: 0px 0px 4px 1px rgba(0,0,0,0.8);*/
+		}
+		.TitleBox
+		{
+			margin-top: 10px;
+			border-top-right-radius: 10px;
+			border-bottom-right-radius: 10px;
+			width: 575px;
+			height: 135px;
+			float: right;
+			background-color: white;
+			z-index: -3;
+			/*box-shadow: 0px 0px 4px 1px rgba(0,0,0,0.8);*/
+		}
+		.TextBox
+		{
+			width: 450px;
+			height: 150px;
+			float: right;
+			/*line-height: 60px;*/
+		}
+		h1
+		{
+			text-align: center;
+			font-weight: normal;
+			font-family: sans-serif;
+			color: royalblue;
+			width: 400px;
+			margin-left: 25px;
+		}
+		h3
+		{
+			width: 400px;
+			margin-left: 25px;
+			color: rgba(0,0,0,0.8);
+			/*font-family: sans-serif;*/
+		}
+		.FWD
+		{
+			font-family: sans-serif;
+			font-size: 1.2em;
+			color: rgba(0,0,0,0.6);
+			border-right: 1px solid black;
+			padding-right: 5px;
+		}
+		.DI
+		{
+			width: 120px;
+			height: auto;
+			float: right;
+			line-height: 11px;
+			/*border: 1px solid black;*/
+		}
+		.GD
+		{
+			color: red;
+			font-size: 13px;
+			font-family: railway;
+			font-style: italic;
+			letter-spacing: 1px;
+		}
+		hr
+		{
+			margin-top: -10px;
+			width: 100%;
+			color: rgba(0,0,0,0.2);
+		}
+		
+		
+		
+	</style>
+
 </head>
 <body>
-	<h1>Hello World</h1>
-	<h1>Hello World</h1>
+	<div class="mainDiv">
+		<div class="navbar" onmouseover="show()" onmouseout="hide()"><!-- <span>Follow Us</span> -->
+			<ul class="menu">
+
+				<!-- href="URL"
+				target="_blank/_parent/_self/_top/framename", type="text/html",
+				rel="alternate/author/bookmark/external/help/licence/next/nofollow/noreferrer/noopener/prev/search/tag"
+				ping="list_of_URLs"
+				name="section_name"
+				media="media_query"
+				type="media_type"
+				hreflang="language_code"
+				download="filename" -->
+
+				<li><a href="https://www.facebook.com/arshad.siddiqui.52438" class="fa fa-facebook"></a></li>
+				<li><a href="https://twitter.com/ArshadS03066909" class="fa fa-twitter"></a></li>
+				<li><a href="https://www.instagram.com/m.arshad.siddiqui/" class="fa fa-instagram"></a></li>
+				<li><a href="https://www.linkedin.com/in/mohammad-arsad-siddiqui-760a2616b" class="fa fa-linkedin"></a></li>
+				<li><a href="https://plus.google.com/u/0/103447046788396948452" class="fa fa-google-plus"></a></li>
+				<li><a href="https://in.pinterest.com/arshadsiddiqui36/" class="fa fa-pinterest"></a></li>
+				<li><a href="https://github.com/ArshadSiddiqui36/MyGitHubFile" class="fa fa-github"></a></li>
+				<li><a href="mailto:arshadsiddiqui36@gmail.com" target="_top" class="fa fa-envelope"></a></li>	
+				<li><a href="" class="fa fa-whatsapp"></a></li>
+				<!-- <li><a href="tel:+919161757583" class="fa fa-phone"></a></li>	 -->
+			</ul>
+		</div>
+
+	<div class="Container" id="Container">
+		<div class="Circle"></div>
+		<div class="TitleBox">
+			<div class="TextBox">
+				<h1>Mohammad Arshad Siddiqui</h1>
+				<hr size="1">
+				<h3><span class="FWD">Fullstack Web Developer</span>
+					<div class="DI"><span class="GD">UI/UX Designer</span><br><span class="GD">Graphics Designer</span></div>
+				</h3>
+			</div>
+		</div>
+	</div>
+</div>
+
+	<script>
+		var x=document.getElementById('Container');
+		function show()
+		{
+			x.style.visibility="visible";
+		}
+		function hide()
+		{
+			x.style.visibility="hidden";
+		}
+
+	</script>
+
+
 </body>
 </html>
